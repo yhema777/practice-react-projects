@@ -1,0 +1,28 @@
+.heading{
+    color: green;
+
+}
+
+.details{
+    text-align: left;
+  margin-left: 80px;
+ 
+
+}
+
+.values{
+    width: 300px;
+}
+
+button{
+    background-color: green;
+    color: white;
+    width: 90px;
+    border-radius: 3px;
+    
+}
+
+.button1{
+    margin-right: 40px;
+    margin-left: 20px;
+}
