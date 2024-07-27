@@ -5,13 +5,36 @@
 
 .details{
     text-align: left;
-  margin-left: 80px;
+ display: flex;
+ justify-content: center;
  
 
 }
 
+#male, #english{
+    margin-left: 80px;
+    margin-right: 10px;
+    
+}
+
+#female, #english, #maths, #other{
+    margin-right: 10px;
+}
+
+.genders, .subjects{
+    margin-right: 15px;
+}
+
 .values{
-    width: 300px;
+    width: 350px;
+}
+
+.dropdown{
+    width: 350px;
+}
+
+#aboutyou{
+    height: 90px;
 }
 
 button{
@@ -25,4 +48,10 @@ button{
 .button1{
     margin-right: 40px;
     margin-left: 20px;
+}
+
+.details  label{
+    font-weight: bold;
+    font-size: small;
+    font-family: Arial, Helvetica, sans-serif;
 }

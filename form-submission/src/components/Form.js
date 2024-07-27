@@ -1,29 +1,93 @@
+import { useState } from 'react';
 import '../css/Form.css'
 function Form() {
+    const [firstname, setFirstname] = useState("");
+    const [lastname, setLastname] = useState("");
+    const [email, setEmail] = useState("");
+    const [contact, setContact] = useState("");
+    const [gender, setGender] = useState("");
+    const [subjects, setSubjects] = useState({
+        english: false,
+        maths: false,
+        physics: false,
+    });
+    const [resume, setResume] = useState("");
+    const [url, setUrl] = useState("");
+    const [selectedValue, setSelectedValue] = useState('placeholder');
+    const [about, setAbout] = useState("");
+
+
+
+    function onReset() {
+        setFirstname("");
+        setLastname("");
+        setEmail("");
+        setContact("");
+        setUrl("");
+        setAbout("");
+        setGender("");
+        setSelectedValue('placeholder');
+
+
+    }
+
+    function onSubmit(e) {
+        e.preventDefault();
+
+        console.log(
+            `First Name : ${firstname}`,
+            `Last Name: ${lastname}`,
+            `URL: ${url}`,
+            `Email: ${email}`,
+            `Contact: ${contact}`,
+            `Gender: ${gender}`,
+            `Selected Value: ${selectedValue}`,
+            `About: ${about}`
+
+        )
+
+    }
+
+    function handleSelectChange(event) {
+        setSelectedValue(event.target.value);
+    };
+
+
     return (
         <div className="App">
             <h4 className='heading'>Form in React</h4>
             <div className='details'>
-                <form action='#' method="get" >
+                <form action='#' method="get">
                     <label for="firstname" >
                         First Name*
                     </label><br />
                     <input
                         type="text"
                         id="firstname"
+                        name='firstname'
+                        value={firstname}
                         className='values'
                         placeholder="Enter First Name"
-                        required /><br />
+                        required
+                        onChange={(e) => {
+                            setFirstname(e.target.value);
+                        }}
+                    /><br />
 
-                    <label for="firstname">
+                    <label for="lastname">
                         Last Name*
                     </label><br />
                     <input
                         type="text"
                         id="lastname"
+                        value={lastname}
                         className='values'
                         placeholder="Enter Last Name"
-                        required /><br />
+                        required
+                        onChange={(e) => {
+                            setLastname(e.target.value);
+                        }}
+                    /><br />
 
                     <label for="email">
                         Enter Email*
@@ -31,38 +95,63 @@ function Form() {
                     <input
                         type="text"
                         id="email"
+                        value={email}
                         className='values'
                         placeholder="Enter email"
-                        required /><br />
+                        required
+                        onChange={(e) => {
+                            setEmail(e.target.value);
+                        }}
+                    /><br />
 
                     <label for="contact">Contact*</label><br />
                     <input
                         type="text"
                         id="contact"
+                        value={contact}
                         className='values'
                         placeholder="Enter mobile number"
-                        required /><br />
+                        required
+                        onChange={(e) => {
+                            setContact(e.target.value);
+                        }}
+                    /><br />
 
                     <label >Gender*</label><br />
                     <input
                         type="radio"
                         id="male"
                         name="gender"
-                        required />
-                    <label for="male" >
+                        value="male"
+                        required
+                        onChange={(e) => {
+                            setGender(e.target.value);
+                        }} />
+                    <label for="male"
+                        className='genders'>
                         Male
                     </label>
                     <input type="radio"
                         id="female"
-                        name="gender" />
-                    <label for="female">
+                        name="gender"
+                        value="female"
+                        onChange={(e) => {
+                            setGender(e.target.value);
+                        }} />
+                    <label for="female"
+                        className='genders'>
                         Female
                     </label>
                     <input
                         type="radio"
                         id="other"
-                        name="gender" />
-                    <label for="other">
+                        name="gender"
+                        value="other"
+                        onChange={(e) => {
+                            setGender(e.target.value);
+                        }} />
+                    <label for="other"
+                        className='genders'>
                         Other
                     </label><br />
 
@@ -71,53 +160,85 @@ function Form() {
                     </label><br />
                     <input
                         type="checkbox"
-                        id="english" n
-                        ame="subject1" />
-                    <label for="english" >
+                        id="english"
+                        value="english"
+                        name="subject1"
+                    />
+                    <label for="english"
+                        className='subjects'>
                         English
                     </label>
                     <input
                         type="checkbox"
                         id="maths"
-                        name="subject2" />
-                    <label for="maths" >
+                        value="maths"
+                        name="subject2"
+                        className='subjects' />
+                    <label for="maths"
+                        className='subjects' >
                         Maths
                     </label>
                     <input
                         type="checkbox"
                         id="physics"
-                        name="subject3" />
-                    <label for="physics" >
+                        value="physics"
+                        name="subject3"
+                        className='subjects' />
+                    <label for="physics"
+                        className='subjects'>
                         Physics
                     </label><br />
 
                     <label>
                         Upload Resume*
                     </label><br />
-                    <input type="file">
+                    <input type="file"
+                        required>
                     </input><br />
 
                     <label for="url">
-                        Enter URL
+                        Enter URL*
                     </label><br />
                     <input
                         type="text"
                         id="url"
+                        value={url}
                         className='values'
-                        placeholder="Enter url" /><br />
+                        placeholder="Enter url"
+                        onChange={(e)=>{
+                            setUrl(e.target.value);
+                        }}
+                        required /><br />
 
                     <label for="exp">
                         Select your choice
                     </label><br />
-                    <select id="exp" name="cars"
+                    <select id="exp"
+                        name="experience"
+                        className='dropdown'
+                        value={selectedValue}
+                        onChange={handleSelectChange}
                     >
-                        <option value="1-2 years" className='values'>
+                        <option
+                            value="placeholder"
+                            disabled
+                        >
+                            Select your value
+                        </option>
+
+                        <option
+                            value="1-2 years"
+                            className='values'>
                             1-2 years
                         </option>
-                        <option value="2-3 years" className='values'>
+                        <option
+                            value="2-3 years"
+                            className='values'>
                             2-3 years
                         </option>
-                        <option value="3+ years" className='values'>
+                        <option
+                            value="3+ years"
+                            className='values'>
                             3+ years
                         </option>
                     </select><br />
@@ -126,15 +247,27 @@ function Form() {
                         About
                     </label><br />
                     <textarea
-                        placeholder="Enter about you"
+                        placeholder="About yourself"
                         id='aboutyou'
+                        value={about}
+                        onChange={(e)=>{
+                            setAbout(e.target.value);
+                        }}
                         className='values'></textarea><br />
 
-                    <label>Submit or Reset</label><br />
-
                     <div className='buttons'>
-                        <button className='button1'>Reset</button>
-                        <button>Submit</button>
+                        <button
+                            className='button1'
+                            type='reset'
+                            onClick={onReset}>
+                            Reset
+                        </button>
+                        <button
+                            type='submit'
+                            onClick={onSubmit}
+                            >
+                            Submit
+                        </button>
                     </div>
 
 
