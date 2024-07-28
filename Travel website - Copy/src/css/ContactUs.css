@@ -1,0 +1,30 @@
+.contact-details{
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+    font-size: 15px;
+   
+}
+
+.address{
+    margin-right: 250px;
+    
+}
+
+.address > p{
+    margin-top: -14px;
+    padding: 3px;
+}
+
+.address > h3{
+    margin-top: -7px;
+}
+
+.contact-info > p{
+    margin-top: -14px;
+    padding: 3px;
+}
+
+.contact-info > h3{
+    margin-top: -7px;
+}
