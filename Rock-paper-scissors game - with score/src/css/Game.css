@@ -1,0 +1,8 @@
+.buttons > button{
+    margin-right: 20px;
+    width: 80px;
+    height: 30px;
+    background-color: green;
+    color: white;
+    border-radius: 5px;
+}
