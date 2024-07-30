@@ -1,11 +1,10 @@
-
 import './App.css';
-import Game from './components/Game'
+import Todo from './components/Todo'
 
 function App() {
   return (
     <div className="App">
-     <Game />
+     <Todo />
     </div>
   );
 }
