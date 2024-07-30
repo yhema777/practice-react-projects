@@ -5,27 +5,36 @@ function Game() {
   const [userselection, setUserSelection] = useState("");
   const [score, setScore] = useState("");
   const [resultText, setResultText] = useState("");
+  const [userscore, setUserscore] = useState(0);
+  const [computerscore, setComputerscore] = useState(0);
+ // const [gamestarted,setGamestareted] = useState(false)
 
   useEffect(() => {
     if (userselection && computer) {
-        let result="";
+      let result = "";
       if (userselection === computer) {
-        result="Tie match";
+        result = "Tie match";
       } else if (
         (userselection === "Rock" && computer === "Scissors") ||
         (userselection === "Paper" && computer === "Rock") ||
         (userselection === "Scissors" && computer === "Paper")
       ) {
-        result="User wins";
+        result = "User wins";
+        setUserscore((prevScore) => prevScore + 1);
       } else {
-        result="Computer wins";
+       result = "Computer wins";
+        setComputerscore((prevScore) => prevScore + 1);
       }
-      setScore(result)
+      setScore(result);
       setResultText(
         `Computer selected ${computer}\nUser selected ${userselection}\n${result}`
       );
     }
   }, [computer, userselection]);
+
+  // function Buttonsenabled(){
+  //   setGamestareted(true)
+  // }
 
   function Rockselect() {
     setUserSelection("Rock");
@@ -38,7 +47,7 @@ function Game() {
   function Scissorsselect() {
     setUserSelection("Scissors");
     Computerselection();
-    <p>Computer selected {computer}</p>;
+    
   }
 
   function Computerselection() {
@@ -55,22 +64,38 @@ function Game() {
     }
   }
 
+  function onReset(){
+    setComputerscore(0);
+    setUserscore(0);
+
+  }
+
   return (
     <div className="main">
       <p>WELCOME TO ROCK, PAPER, SCISSORS GAME</p>
       <div className="buttons">
-        <button onClick={Rockselect}>Rock</button>
-        <button onClick={Paperselect}>Paper</button>
+        <button onClick={Rockselect} >Rock</button>
+        <button onClick={Paperselect} >Paper</button>
         <button onClick={Scissorsselect}>Scissors</button>
+      
       </div>
+
+      <button className="resetbutton" onClick={onReset}>Reset</button>
 
       {resultText && (
         <div>
-          <p>{resultText.split('\n')[0]}</p>
-          <p>{resultText.split('\n')[1]}</p>
-          <p>{resultText.split('\n')[2]}</p>
+          <p>{resultText.split("\n")[0]}</p>
+          <p>{resultText.split("\n")[1]}</p>
+          <p>{resultText.split("\n")[2]}</p>
+          <p>{resultText.split("\n")[3]}</p>
+          
         </div>
       )}
+
+      <div>
+        <p>User score: <strong>{userscore}</strong></p>
+        <p>Computer score: <strong>{computerscore}</strong></p>
+      </div>
     </div>
   );
 }
