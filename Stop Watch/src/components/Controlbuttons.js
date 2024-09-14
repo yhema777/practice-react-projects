@@ -1,7 +1,10 @@
 function Controlbuttons(){
+    function startTimer(){
+        
+    }
     return(
         <div>
-            <button>
+            <button onClick={startTimer}>
                 Start
             </button>
 

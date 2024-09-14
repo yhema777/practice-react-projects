@@ -1,18 +1,11 @@
-import '../css/card.css';
-
-
-function Card({data}) {
-  const {title, ingredients, calories,id} = data;
+function Card({ data }) {
+  const { itemname, price } = data;
   return (
-    <div className="container">
-      <div className="card" key={id}>
-        <div><strong>{title}</strong></div>
-        <ol>
-        {ingredients.map((ingredient, index) => (
-          <li key={index}>{ingredient}</li>
-        ))}
-      </ol>
-        <div><strong>Calories: </strong>{calories}</div>
+    <div id="container">
+      <div>
+        <p>{itemname}</p>
+        <p>{price}</p>
+        <button>Add to Shopping Cart</button>
       </div>
     </div>
   );

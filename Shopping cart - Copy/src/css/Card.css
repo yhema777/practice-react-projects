@@ -1,0 +1,27 @@
+.card{
+    width: 170px;
+    height: 290px;
+    margin: 20px;
+    border: 1px solid black;
+    background-color: lightgray;
+   
+}
+
+.container{
+    display: flex;
+}
+.restro-img{
+    width: 100%;
+    height: 50%;
+}
+
+.restro-info> p{
+    padding: 0px;
+    margin: 3px;
+    font-size: medium;
+}
+
+.restro-name{
+    font-weight: bold;
+}
+

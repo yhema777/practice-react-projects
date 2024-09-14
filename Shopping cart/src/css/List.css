@@ -1,0 +1,18 @@
+.searchbox{
+    width: 300px;
+    height: 25px;
+    border-radius: 10px;
+}
+
+.header{
+    background-color: violet;
+}
+
+.container{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card{
+    width: 25%;
+}

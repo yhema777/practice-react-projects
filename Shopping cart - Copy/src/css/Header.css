@@ -1,0 +1,23 @@
+.logo{
+ height: 70px;
+}
+
+ul{
+    list-style-type: none;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;  
+    border: 1px solid black;
+    margin: 20px;   
+}
+
+ul{
+    display: flex;   
+}
+
+li{
+    padding: 10px;
+    margin: 10px;
+}

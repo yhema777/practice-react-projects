@@ -6,10 +6,17 @@ import Controlbuttons from './Controlbuttons'
 function Stopwatch({ data }) {
   const [initial, setInitial] = useState("00:00:00");
 
+  function startTimer(prev){
+    setInitial();
+
+  }
+
   return (
     <div>
       <Timer />
-      <Controlbuttons />
+      <button onClick={startTimer}>
+                Start
+            </button>
     </div>
   );
 }
