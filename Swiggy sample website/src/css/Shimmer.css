@@ -1,0 +1,30 @@
+.txt-img{
+    display: flex;
+    align-items: center;
+    width: 80%;
+    margin-left: 200px;
+    margin-bottom: 40px;
+   
+}
+
+.img > img{
+    width: 180px;
+    height: 150px;
+}
+
+.txt >p {
+    text-align: start;
+}
+
+.txt{
+    width: 56%;
+    margin-right: 60px;
+}
+
+
+
+.item-name, .item-price{
+    padding: 0px;
+    margin: 0px;
+}
+

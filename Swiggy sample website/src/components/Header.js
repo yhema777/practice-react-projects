@@ -1,19 +1,20 @@
 import "../css/Header.css";
+import {logoURL} from '../utilitis/constants.js'
+import { Link } from "react-router-dom";
 
 function Header() {
   return (
     <div className="header">
       <img
         className="logo"
-        src="https://play-lh.googleusercontent.com/4OOU73CI8knF4TByikeCEA1IOj3hb_AyXdV0Y2_XNikAoVan257QCO0ppXK9e3Z1ncY"
+        src={logoURL}
       />
       <div>
-        <ul classname="links">
-          <li>Search</li>
-          <li>Offers</li>
-          <li>Help</li>
-          <li>Sign in</li>
-          <li>Cart</li>
+        <ul className="links">
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/about">About us</Link></li>
+          <li><Link to="/contact">Contact us</Link></li>
+          <li><Link to="/cart">Cart</Link></li>
         </ul>
       </div>
     </div>
@@ -21,3 +22,5 @@ function Header() {
 }
 
 export default Header;
+
+

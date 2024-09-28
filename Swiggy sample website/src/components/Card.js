@@ -1,4 +1,5 @@
 import "../css/Card.css";
+import { restroimageURL } from "../utilitis/constants";
 
 function Card(props) {
   const { name, rating, deliveryTime, area, image } = props;
@@ -8,7 +9,7 @@ function Card(props) {
         <img
           className="restro-img"
           src={
-            "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
+            restroimageURL +
             image
           }
         />

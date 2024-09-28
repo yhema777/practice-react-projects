@@ -1,0 +1,16 @@
+.categorytitle{
+    text-align: start;
+    margin-left: 200px;
+    font-weight: bold;
+    cursor: pointer;
+    padding-bottom: 20px;
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+   
+}
+
+.title{
+    margin-right: 200px;
+}
+
