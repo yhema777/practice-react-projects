@@ -1,9 +1,9 @@
 import './App.css';
-import Memo2 from './components/Memo2';
+import Context from './components/Context';
 
 function App() {
   return (
-    <Memo2 />
+    <Context />
   );
 }
 
