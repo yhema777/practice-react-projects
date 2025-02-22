@@ -1,13 +1,26 @@
-import React, {useState} from 'react'
-import Header from './Header'
+import React, {useState, useRef} from 'react'
+import Header from './Header';
+import errorValidation from '../utils/validation';
 
 const Login = () => {
 
   const [isSignIn, setIsSignIn] =useState(true);
+  const [errorMessage, setErrorMessage] = useState([]);
+
+    const email = useRef(null);
+    const password = useRef(null);
+ 
 
   function handleSignInSignUp(){
     setIsSignIn(!isSignIn);
   }
+
+  function handleFormValidation(){
+    const error = errorValidation(email.current.value, password.current.value);
+    setErrorMessage(error);  
+
+  }
+
   return (
     <div>
       <div>
@@ -18,25 +31,29 @@ const Login = () => {
           alt="Netflix-logo"
         />
       </div>
-      <form className="absolute w-3/12 p-12 bg-black my-36 mx-auto right-0 left-0 opacity-80">
+      <form onSubmit={(e)=>e.preventDefault()} className="absolute w-3/12 p-12 bg-black my-36 mx-auto right-0 left-0 opacity-80">
         <h1 className="font-bold text-3xl text-white py-2">{isSignIn ? "Sign In" : "Sign Up" }</h1>
         <input
+          ref={email}
           type="text"
           placeholder="Email or mobile number"
-          className="p-2 my-2 bg-slate-800 w-full"
+          className="p-2 my-2 bg-slate-800 w-full text-white"
         />
+        {errorMessage.includes("Email is invalid")  && <p className='text-red-600 font-bold'>Email is invalid</p>}
         {!isSignIn && <input
           type="text"
           placeholder="Enter Full Name"
           className="p-2 my-2 bg-slate-800 w-full"
         />}
         <input
+          ref={password}
           type="password"
           placeholder="Password"
-          className="p-2 my-2 bg-slate-800 w-full"
+          className="p-2 my-2 bg-slate-800 w-full text-white"
         />
+        { errorMessage.includes("Password is invalid") && <p className='text-red-600 font-bold'>Password is invalid</p>}
         <button className="p-4 my-4 bg-red-700 w-full text-white"
-        onClick={(e)=>e.preventDefault()}>
+        onClick={handleFormValidation}>
           {isSignIn ? "Sign In" : "Sign Up" }
         </button>
         <p className="text-white hover:cursor-pointer"
