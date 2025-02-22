@@ -1,7 +1,13 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Header from './Header'
 
 const Login = () => {
+
+  const [isSignIn, setIsSignIn] =useState(true);
+
+  function handleSignInSignUp(){
+    setIsSignIn(!isSignIn);
+  }
   return (
     <div>
       <div>
@@ -13,21 +19,29 @@ const Login = () => {
         />
       </div>
       <form className="absolute w-3/12 p-12 bg-black my-36 mx-auto right-0 left-0 opacity-80">
-        <h1 className="font-bold text-3xl text-white py-2">Sign In</h1>
+        <h1 className="font-bold text-3xl text-white py-2">{isSignIn ? "Sign In" : "Sign Up" }</h1>
         <input
           type="text"
           placeholder="Email or mobile number"
           className="p-2 my-2 bg-slate-800 w-full"
         />
+        {!isSignIn && <input
+          type="text"
+          placeholder="Enter Full Name"
+          className="p-2 my-2 bg-slate-800 w-full"
+        />}
         <input
           type="password"
           placeholder="Password"
           className="p-2 my-2 bg-slate-800 w-full"
         />
-        <button className="p-4 my-4 bg-red-700 w-full text-white">
-          Sign In
+        <button className="p-4 my-4 bg-red-700 w-full text-white"
+        onClick={(e)=>e.preventDefault()}>
+          {isSignIn ? "Sign In" : "Sign Up" }
         </button>
-        <p className="text-white">New to Netflix? Sign up now.</p>
+        <p className="text-white hover:cursor-pointer"
+        onClick={handleSignInSignUp}
+        >{isSignIn ? "New to Netflix? Sign up now." : "Already registered? Sign In Now" }</p>
       </form>
     </div>
   );
