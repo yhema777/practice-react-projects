@@ -45,6 +45,12 @@ you want to use that authentication --> Enable the first option as we need email
 - Now, sign up with email and password, you can see that login under Users tab.
 - You can sign in using that logins as well.
  
+Any time, if you get errors related to firebase like can't resolve firebase/auth or firebase/app,
+try this:
+- npm list firebase
+If firebase is not listed or have an issue, reinstall it:
+- npm install firebase@latest
+
 
 
 

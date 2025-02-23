@@ -15,6 +15,10 @@ In this, modify this as:
 # Installing router
 - npm i -D react-router-dom 
 
+# Installing Redux
+- npm i -D @reduxjs/toolkit
+- npm i react-redux
+
 
 
 
