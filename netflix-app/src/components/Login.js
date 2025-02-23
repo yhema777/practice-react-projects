@@ -1,24 +1,57 @@
-import React, {useState, useRef} from 'react'
-import Header from './Header';
-import errorValidation from '../utils/validation';
+import React, { useState, useRef } from "react";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import Header from "./Header";
+import errorValidation from "../utils/validation";
+import { auth } from "../utils/firebase";
 
 const Login = () => {
-
-  const [isSignIn, setIsSignIn] =useState(true);
+  const [isSignIn, setIsSignIn] = useState(true);
   const [errorMessage, setErrorMessage] = useState([]);
 
-    const email = useRef(null);
-    const password = useRef(null);
- 
+  const email = useRef(null);
+  const password = useRef(null);
 
-  function handleSignInSignUp(){
+  function handleSignInSignUp() {
     setIsSignIn(!isSignIn);
   }
 
-  function handleFormValidation(){
+  function handleFormValidation() {
     const error = errorValidation(email.current.value, password.current.value);
-    setErrorMessage(error);  
+    setErrorMessage(error);
+    if (error) return;
 
+    if (!isSignIn) {
+      //Sign Up logic
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          const user = userCredential.user;
+          console.log(user);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + "_" + errorMessage);
+        });
+    } else {
+      //Sign In logic
+      signInWithEmailAndPassword(auth, email.current.value, password.current.value)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          console.log(user);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + "_" + errorMessage);
+        });
+    }
   }
 
   return (
@@ -31,37 +64,53 @@ const Login = () => {
           alt="Netflix-logo"
         />
       </div>
-      <form onSubmit={(e)=>e.preventDefault()} className="absolute w-3/12 p-12 bg-black my-36 mx-auto right-0 left-0 opacity-80">
-        <h1 className="font-bold text-3xl text-white py-2">{isSignIn ? "Sign In" : "Sign Up" }</h1>
+      <form
+        onSubmit={(e) => e.preventDefault()}
+        className="absolute w-3/12 p-12 bg-black my-36 mx-auto right-0 left-0 opacity-80"
+      >
+        <h1 className="font-bold text-3xl text-white py-2">
+          {isSignIn ? "Sign In" : "Sign Up"}
+        </h1>
         <input
           ref={email}
           type="text"
           placeholder="Email or mobile number"
           className="p-2 my-2 bg-slate-800 w-full text-white"
         />
-        {errorMessage.includes("Email is invalid")  && <p className='text-red-600 font-bold'>Email is invalid</p>}
-        {!isSignIn && <input
-          type="text"
-          placeholder="Enter Full Name"
-          className="p-2 my-2 bg-slate-800 w-full"
-        />}
+         
+        {!isSignIn && (
+          <input
+            type="text"
+            placeholder="Enter Full Name"
+            className="p-2 my-2 bg-slate-800 w-full text-white"
+          />
+        )}
         <input
           ref={password}
           type="password"
           placeholder="Password"
           className="p-2 my-2 bg-slate-800 w-full text-white"
         />
-        { errorMessage.includes("Password is invalid") && <p className='text-red-600 font-bold'>Password is invalid</p>}
-        <button className="p-4 my-4 bg-red-700 w-full text-white"
-        onClick={handleFormValidation}>
-          {isSignIn ? "Sign In" : "Sign Up" }
+
+        <p className="text-red-600 font-bold">{errorMessage}</p>
+
+        <button
+          className="p-4 my-4 bg-red-700 w-full text-white"
+          onClick={handleFormValidation}
+        >
+          {isSignIn ? "Sign In" : "Sign Up"}
         </button>
-        <p className="text-white hover:cursor-pointer"
-        onClick={handleSignInSignUp}
-        >{isSignIn ? "New to Netflix? Sign up now." : "Already registered? Sign In Now" }</p>
+        <p
+          className="text-white hover:cursor-pointer"
+          onClick={handleSignInSignUp}
+        >
+          {isSignIn
+            ? "New to Netflix? Sign up now."
+            : "Already registered? Sign In Now"}
+        </p>
       </form>
     </div>
   );
-}
+};
 
 export default Login;
