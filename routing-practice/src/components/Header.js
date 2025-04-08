@@ -1,11 +1,19 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
     <div>
-      <span className='bg-gray-900'>Contact</span>
-      <span>Error</span>
-      <span>Videoplayer</span>
+      <Link to="/contact">
+      <span className='bg-slate-500 m-5 p-2'>Contact</span>
+      </Link>
+      <Link to="/error">
+      <span className='bg-slate-500 m-5 p-2'>Error</span>
+      </Link>
+      <Link to="/videoplayer">
+      <span className='bg-slate-500 m-5 p-2'>Videoplayer</span>
+      </Link>
+
     </div>
   )
 }
