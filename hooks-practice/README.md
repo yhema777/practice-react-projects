@@ -1,15 +1,20 @@
 # Installing and setting Tailwind CSS:
- - npm i - D tailwindcss (This has to beused only if tailwind has not already installed in your system. With create react app, it will be there, just use the below command)
+ 1. - npm i - D tailwindcss (This has to beused only if tailwind has not already installed in your system. With create react app, it will be there, just use the below command)
  - npx tailwindcss init
- 
-tailwind.config.js file will be created. 
+
+2. # Configure your template paths 
+Tailwind.config.js file will be created. 
 In this, modify this as:
  content: ["./src/**/*.js"],
   
-# In App.css, remove all content and give it as:
+3. # Add the Tailwind directives to your CSS# 
+In App.css, remove all content and give it as:
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+4. # Start the build process
+Run the app with npm start
 
 
 # Installing router

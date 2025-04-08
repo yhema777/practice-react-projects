@@ -7,6 +7,7 @@ import Body from './components/Body';
 import Error from './components/Error';
 import Videoplayer from './components/Videoplayer';
 import Contact from './components/Contact';
+import './App.css';
 
 function App(){
   function AppLayout() {
