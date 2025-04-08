@@ -1,6 +1,6 @@
 # Installing and setting Tailwind CSS:
-npm i - D tailwindcss
-npx tailwindcss init
+ - npm i - D tailwindcss (This has to beused only if tailwind has not already installed in your system. With create react app, it will be there, just use the below command)
+ - npx tailwindcss init
  
 tailwind.config.js file will be created. 
 In this, modify this as:
