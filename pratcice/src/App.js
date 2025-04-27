@@ -63,7 +63,6 @@ function App() {
       setTodoList(searchresults);
     }
     setSearchClicked(true);
-
   }
 
   return (
