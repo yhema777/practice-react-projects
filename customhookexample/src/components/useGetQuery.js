@@ -5,10 +5,19 @@ const useGetQuery = (url) => {
 
 
     useEffect(()=>{
-        fetch(url)
-        .then(result=>result.json())
-        .then(json=>setData(json))
-        .catch(err=>console.log(err))
+        const fetchData = async() =>{
+            try{
+              const response = await fetch(url)
+              const json = await response.json();
+              setData(json);
+            }
+            catch (err) {
+                console.log(err);
+
+            }
+        }
+        
+        fetchData();
     }, []);
 
   return {data};
