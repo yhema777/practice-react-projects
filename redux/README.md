@@ -1,6 +1,6 @@
 # Steps to add Redux in the project with simple count example
 
-🧠 Redux Flow in 5 Steps:
+🧠 Redux Flow in 5 Steps: 
  - User interacts with the UI (e.g., clicks a button)
  - dispatch() sends an action (e.g., { type: 'counter/increment' })
  - Redux store passes action to reducer/slice
