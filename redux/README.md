@@ -1,6 +1,7 @@
 # Steps to add Redux in the project with simple count example
 
-- First install reudx using "npm install @reduxjs/toolkit react-redux"
+# Step 1:
+- First install redux using "npm install @reduxjs/toolkit react-redux"
 
 # Step 2: Create Slice
 
