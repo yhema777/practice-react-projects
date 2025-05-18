@@ -1,5 +1,42 @@
 # Steps to add Redux in the project with simple count example
 
+🧠 Redux Flow in 5 Steps:
+ - User interacts with the UI (e.g., clicks a button)
+ - dispatch() sends an action (e.g., { type: 'counter/increment' })
+ - Redux store passes action to reducer/slice
+ - Slice updates the state
+ - React re-renders using new state from useSelector
+
+         +------------------+
+         |   React Button   |     <-- (User clicks)
+         +--------+---------+
+                  |
+                  |  dispatch(increment())
+                  v
+         +--------+---------+
+         |     Redux Store   |
+         +--------+---------+
+                  |
+                  |  Action goes to Reducer/Slice
+                  v
+         +--------+---------+
+         |   counterSlice    |
+         |   (state.value++) |
+         +--------+---------+
+                  |
+                  |  New state returned
+                  v
+         +--------+---------+
+         |  useSelector()   |  <-- Gets updated state
+         +--------+---------+
+                  |
+                  v
+         +--------+---------+
+         |  React Component |
+         |   Re-renders UI  |
+         +------------------+
+
+
 # Step 1:
 - First install redux using "npm install @reduxjs/toolkit react-redux"
 
